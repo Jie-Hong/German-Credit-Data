@@ -24,8 +24,13 @@ source("C:\\Users\\User\\Desktop\\C4.5\\mystratifiedsampling.R")
 mystratifiedsampling(data_less_dimensions,700)
 
 #read the training and test data into R
-train_data<-read.csv("C:/Users/User/Desktop/C4.5/train_data.csv")
-test_data<-read.csv("C:/Users/User/Desktop/C4.5/test_data.csv")
+train_data<-read.csv("C:/Users/User/Desktop/C4.5/train_data.csv")[c("Status_of_existing_checking_account","Duration_in_month","Credit_history","Class")]
+test_data<-read.csv("C:/Users/User/Desktop/C4.5/test_data.csv")[c("Status_of_existing_checking_account","Duration_in_month","Credit_history","Class")]
+
+train_data[,1] <- as.factor(train_data[,1])
+train_data[,3] <- as.factor(train_data[,3])
+test_data[,1] <- as.factor(test_data[,1])
+test_data[,3] <- as.factor(test_data[,3])
 
 #Use C4.5 to build a DT based on the training data
 source("C:\\Users\\User\\Desktop\\C4.5\\myC45.R")
